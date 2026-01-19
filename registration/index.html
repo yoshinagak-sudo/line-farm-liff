@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初期設定 - LINE農家プラットフォーム</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>初期設定</h1>
+      <p>あなた専用の市況・天気を届けます</p>
+    </header>
+
+    <main>
+      <!-- ステップ1: 品目選択 -->
+      <section id="step1" class="step active">
+        <h2>1. 作っている品目を選択</h2>
+        <p class="hint">複数選択できます</p>
+
+        <div class="crop-grid" id="cropGrid">
+          <!-- JSで生成 -->
+        </div>
+
+        <button class="btn primary" onclick="nextStep(2)" id="step1Next" disabled>
+          次へ
+        </button>
+      </section>
+
+      <!-- ステップ2: 地域選択 -->
+      <section id="step2" class="step">
+        <h2>2. 所在地を選択</h2>
+        <p class="hint">天気予報の対象地域</p>
+
+        <div class="prefecture-select">
+          <select id="prefectureSelect">
+            <option value="">都道府県を選択</option>
+          </select>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn secondary" onclick="prevStep(1)">戻る</button>
+          <button class="btn primary" onclick="submitRegistration()" id="submitBtn" disabled>
+            登録する
+          </button>
+        </div>
+      </section>
+
+      <!-- 完了 -->
+      <section id="complete" class="step">
+        <div class="complete-icon">✓</div>
+        <h2>登録完了！</h2>
+        <p>明日の朝6時から配信が届きます</p>
+
+        <div class="summary">
+          <h3>登録内容</h3>
+          <div class="summary-item">
+            <span class="label">品目</span>
+            <span class="value" id="summarycrops"></span>
+          </div>
+          <div class="summary-item">
+            <span class="label">地域</span>
+            <span class="value" id="summaryPrefecture"></span>
+          </div>
+        </div>
+
+        <button class="btn primary" onclick="closeLiff()">
+          閉じる
+        </button>
+      </section>
+    </main>
+
+    <!-- ローディング -->
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>読み込み中...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

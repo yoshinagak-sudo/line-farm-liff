@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>出荷予定登録 - LINE農家プラットフォーム</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>出荷予定登録</h1>
+    </header>
+
+    <main>
+      <!-- 登録フォーム -->
+      <section id="form" class="active">
+        <form id="shipmentForm" onsubmit="return false;">
+          <!-- 品目選択 -->
+          <div class="form-group">
+            <label>品目 <span class="required">*</span></label>
+            <select id="cropSelect" required>
+              <option value="">選択してください</option>
+            </select>
+          </div>
+
+          <!-- 数量 -->
+          <div class="form-group">
+            <label>数量 <span class="required">*</span></label>
+            <div class="quantity-input">
+              <input type="number" id="quantity" min="1" step="1" required placeholder="0">
+              <select id="unit">
+                <option value="kg">kg</option>
+                <option value="ケース">ケース</option>
+                <option value="袋">袋</option>
+                <option value="束">束</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 出荷日 -->
+          <div class="form-group">
+            <label>出荷日 <span class="required">*</span></label>
+            <input type="date" id="shipmentDate" required>
+            <p class="form-hint">変更は前日18時まで可能</p>
+          </div>
+
+          <!-- 希望時間 -->
+          <div class="form-group">
+            <label>希望集荷時間</label>
+            <select id="preferredTime">
+              <option value="">指定なし</option>
+              <option value="morning">午前（8:00-12:00）</option>
+              <option value="afternoon">午後（13:00-17:00）</option>
+            </select>
+          </div>
+
+          <!-- 備考 -->
+          <div class="form-group">
+            <label>備考</label>
+            <textarea id="note" rows="2" placeholder="特記事項があれば記入"></textarea>
+          </div>
+
+          <button type="submit" class="btn primary" onclick="submitShipment()">
+            登録する
+          </button>
+        </form>
+
+        <!-- 登録済み一覧 -->
+        <section class="existing-shipments">
+          <h3>登録済みの出荷予定</h3>
+          <div id="shipmentList">
+            <p class="empty">登録済みの出荷予定はありません</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- 完了 -->
+      <section id="complete">
+        <div class="complete-icon">✓</div>
+        <h2>登録完了</h2>
+        <p>出荷予定を登録しました</p>
+
+        <div class="summary">
+          <div class="summary-item">
+            <span class="label">品目</span>
+            <span class="value" id="summaryCrop"></span>
+          </div>
+          <div class="summary-item">
+            <span class="label">数量</span>
+            <span class="value" id="summaryQuantity"></span>
+          </div>
+          <div class="summary-item">
+            <span class="label">出荷日</span>
+            <span class="value" id="summaryDate"></span>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn secondary" onclick="resetForm()">
+            続けて登録
+          </button>
+          <button class="btn primary" onclick="closeLiff()">
+            閉じる
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ローディング -->
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>処理中...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

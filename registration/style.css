@@ -1,0 +1,295 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+header {
+  background: linear-gradient(135deg, #1DB446 0%, #00B900 100%);
+  color: #fff;
+  padding: 24px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+main {
+  padding: 20px;
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.hint {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* 品目グリッド */
+.crop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.crop-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+.crop-item:hover {
+  border-color: #1DB446;
+  background: #f9fff9;
+}
+
+.crop-item.selected {
+  border-color: #1DB446;
+  background: #e8f5e9;
+}
+
+.crop-item .icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.crop-item .name {
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.crop-item .check {
+  display: none;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background: #1DB446;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.crop-item.selected .check {
+  display: block;
+}
+
+.crop-item {
+  position: relative;
+}
+
+/* 都道府県セレクト */
+.prefecture-select {
+  margin-bottom: 24px;
+}
+
+.prefecture-select select {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fff;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+}
+
+.prefecture-select select:focus {
+  outline: none;
+  border-color: #1DB446;
+}
+
+/* ボタン */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn.primary {
+  background: #1DB446;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #18a03d;
+}
+
+.btn.primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.btn.secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn.secondary:hover {
+  background: #e0e0e0;
+}
+
+.btn-group {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px;
+}
+
+/* 完了画面 */
+#complete {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.complete-icon {
+  width: 80px;
+  height: 80px;
+  background: #1DB446;
+  color: #fff;
+  font-size: 40px;
+  line-height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 24px;
+}
+
+#complete h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+#complete > p {
+  color: #666;
+  margin-bottom: 32px;
+}
+
+.summary {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.summary h3 {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-item .label {
+  color: #666;
+}
+
+.summary-item .value {
+  font-weight: 500;
+}
+
+/* ローディング */
+.loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.loading.show {
+  display: flex;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e0e0e0;
+  border-top-color: #1DB446;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading p {
+  margin-top: 16px;
+  color: #666;
+}
