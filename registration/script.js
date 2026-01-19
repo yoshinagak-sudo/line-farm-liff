@@ -4,7 +4,7 @@
 
 // 設定
 const LIFF_ID = '2008916754-BE3VwmAg';
-const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbzbjFxjplSSHR57GUp2rzeEciYqAeUA_cxeQjcAUsfoWyrRBKbXKS5AqW5BrJnWhpVJcw/exec';
+const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbzgZKgSXeqZGH5oCuUfaOPdBMRU9afmTzwAyXVM5Q3vcpHte5iQykq-Wtqfsp3-KqisJA/exec';
 
 // 品目リスト（アイコン付き）
 const CROPS = [
